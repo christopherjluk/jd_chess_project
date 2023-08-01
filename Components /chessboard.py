@@ -62,6 +62,7 @@ class Chessboard(QWidget):
         """
         for i in range(8):
             for j in range(8):
+                self.squares[i][j].reset_color()
                 if(self.squares[i][j].has_piece()):
                     if(self.squares[i][j].contains_piece.get_piece_color() == self.turn_color):
                         if not self.initial_setup:
@@ -503,6 +504,7 @@ class Chessboard(QWidget):
                     if(self.squares[self.connect_list[iter].col][self.connect_list[iter].row].has_piece()):
                         old_piece = self.squares[self.connect_list[iter].col][self.connect_list[iter].row].contains_piece
                     self.squares[self.connect_list[iter].col][self.connect_list[iter].row].setup_piece(self.squares[col][row].get_piece())
+                    self.squares[col][row].setup_piece(None)
                     if self.in_check(self.connect_list[iter].col, self.connect_list[iter].row):
                         remove_flag = True
                     self.squares[col][row].setup_piece(self.squares[self.connect_list[iter].col][self.connect_list[iter].row].get_piece())
