@@ -15,7 +15,7 @@ from Components.chesspiece import Chesspiece
 class Chessboard(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
-        self.exchange_widget = QWidget()
+        self.promotion_widget = QWidget()
         self.game_running = True
         self.initial_setup = True
         self.turn_white = False
@@ -37,7 +37,7 @@ class Chessboard(QWidget):
         self.setLayout(self.board_layout)
         self.setFixedHeight(500)
         self.setFixedWidth(500)
-        self.exchange_widget.setVisible(False)
+        self.promotion_widget.setVisible(False)
 
     def setup_chessboard(self):
         """
@@ -638,10 +638,10 @@ class Chessboard(QWidget):
 
         if self.squares[new_col][new_row].contains_piece.get_piece_name() == 'pawn':
             if(self.squares[new_col][new_row].contains_piece.get_piece_color() == 'white' and new_row == 7):
-                if self.exchange_widget.layout() is not None:
-                    QWidget().setLayout(self.exchange_widget.layout())
-                white_exchange_layout = QGridLayout()
-                white_exchange_layout.addWidget(QLabel("Choose a piece to exchange"), 0, 0, 1, 4)
+                if self.promotion_widget.layout() is not None:
+                    QWidget().setLayout(self.promotion_widget.layout())
+                white_promotion_layout = QGridLayout()
+                white_promotion_layout.addWidget(QLabel("Choose a piece to promote to"), 0, 0, 1, 4)
                 button_1 = QPushButton('♕')
                 button_1.setFont(QFont('Times', 28))
                 button_1.setFixedHeight(50)
@@ -659,22 +659,22 @@ class Chessboard(QWidget):
                 button_4.setFixedHeight(50)
                 button_4.setFixedWidth(50)
                 value = True
-                button_1.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_exchange(col, row, 1))
-                button_2.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_exchange(col, row, 2))
-                button_3.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_exchange(col, row, 3))
-                button_4.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_exchange(col, row, 4))
-                white_exchange_layout.addWidget(button_1, 1, 0, 1, 1)
-                white_exchange_layout.addWidget(button_2, 1, 1, 1, 1)
-                white_exchange_layout.addWidget(button_3, 1, 2, 1, 1)
-                white_exchange_layout.addWidget(button_4, 1, 3, 1, 1)
-                self.exchange_widget.setLayout(white_exchange_layout)
+                button_1.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_promotion(col, row, 1))
+                button_2.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_promotion(col, row, 2))
+                button_3.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_promotion(col, row, 3))
+                button_4.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_promotion(col, row, 4))
+                white_promotion_layout.addWidget(button_1, 1, 0, 1, 1)
+                white_promotion_layout.addWidget(button_2, 1, 1, 1, 1)
+                white_promotion_layout.addWidget(button_3, 1, 2, 1, 1)
+                white_promotion_layout.addWidget(button_4, 1, 3, 1, 1)
+                self.promotion_widget.setLayout(white_promotion_layout)
                 if self.game_running:
-                    self.exchange_widget.setVisible(True)
+                    self.promotion_widget.setVisible(True)
             elif(self.squares[new_col][new_row].contains_piece.get_piece_color() == 'black' and new_row == 0):
-                if self.exchange_widget.layout() is not None:
-                    QWidget().setLayout(self.exchange_widget.layout())
-                black_exchange_layout = QGridLayout()
-                black_exchange_layout.addWidget(QLabel("Choose a piece to exchange"), 0, 0, 1, 4)
+                if self.promotion_widget.layout() is not None:
+                    QWidget().setLayout(self.promotion_widget.layout())
+                black_promotion_layout = QGridLayout()
+                black_promotion_layout.addWidget(QLabel("Choose a piece to promote to"), 0, 0, 1, 4)
                 button_1 = QPushButton('♛')
                 button_1.setFont(QFont('Times', 28))
                 button_1.setFixedHeight(50)
@@ -692,17 +692,17 @@ class Chessboard(QWidget):
                 button_4.setFixedHeight(50)
                 button_4.setFixedWidth(50)
                 value = True
-                button_1.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_exchange(col, row, 1))
-                button_2.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_exchange(col, row, 2))
-                button_3.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_exchange(col, row, 3))
-                button_4.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_exchange(col, row, 4))
-                black_exchange_layout.addWidget(button_1, 1, 0, 1, 1)
-                black_exchange_layout.addWidget(button_2, 1, 1, 1, 1)
-                black_exchange_layout.addWidget(button_3, 1, 2, 1, 1)
-                black_exchange_layout.addWidget(button_4, 1, 3, 1, 1)
-                self.exchange_widget.setLayout(black_exchange_layout)
+                button_1.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_promotion(col, row, 1))
+                button_2.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_promotion(col, row, 2))
+                button_3.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_promotion(col, row, 3))
+                button_4.clicked.connect(lambda value, col=new_col, row=new_row: self.pawn_promotion(col, row, 4))
+                black_promotion_layout.addWidget(button_1, 1, 0, 1, 1)
+                black_promotion_layout.addWidget(button_2, 1, 1, 1, 1)
+                black_promotion_layout.addWidget(button_3, 1, 2, 1, 1)
+                black_promotion_layout.addWidget(button_4, 1, 3, 1, 1)
+                self.promotion_widget.setLayout(black_promotion_layout)
                 if self.game_running:
-                    self.exchange_widget.setVisible(True)
+                    self.promotion_widget.setVisible(True)
             else:
                 self.change_turns()
         else:
@@ -821,7 +821,7 @@ class Chessboard(QWidget):
             if self.in_check(self.black_king_location[0], self.black_king_location[1]):
                 self.squares[self.black_king_location[0]][self.black_king_location[1]].setStyleSheet("background-color : red")
 
-    def pawn_exchange(self, col, row, option):
+    def pawn_promotion(self, col, row, option):
         """
         Function for exchanging a pawn
 
@@ -831,7 +831,7 @@ class Chessboard(QWidget):
             row : int
                 The current row of the piece
             option : int
-                The option user chose to exchange
+                The option user chose to promote to
         """
         if self.game_running:
             num_moves = self.squares[col][row].contains_piece.moved
@@ -855,4 +855,4 @@ class Chessboard(QWidget):
             self.squares[col][row].contains_piece.moved = num_moves
             self.squares[col][row].setCheckable(False)
             self.change_turns()
-            self.exchange_widget.setVisible(False)
+            self.promotion_widget.setVisible(False)
