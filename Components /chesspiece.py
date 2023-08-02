@@ -24,10 +24,11 @@ class Chesspiece(object):
         """
         Function for returning the position of the piece
 
-        Inputs
+        Outputs
             self.position : list
                 The current position of the chesspiece
         """
+        return self.position
 
     def get_piece_color(self):
         """
