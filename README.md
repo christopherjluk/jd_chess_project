@@ -15,6 +15,7 @@ Each square is a QPushButton that can be toggleable if it contains a piece and h
 The chesspiece class will store the information for a chesspiece, including the type of chesspiece, the color of the chesspiece, the position of the chesspiece, and how many moves it has gone. It will also contain a method for obtaining all the possible moves depending on the type of chesspiece.
 
 ## How to Run
+- You must have the PyQt5 package installed when running the application. This can be installed either in your local machine or in a virtual environment.
 - In the terminal, run `python chess.py`. The UI comprising of the chessboard a "new game" button will then pop up, which will then be ready to play for the two users.
 - Once a promotion occurs, a pop-up widget will appear, with 4 buttons indicating 4 pieces that a pawn can be promoted to. Clicking the button indicating whichever piece will correspond to the piece that will be promoted
 - Whenever, the "new game" button is pressed, the chessboard will reset to its original position, where white will make a first move. This can be pressed at any point during the game, but will be particularly useful, especially for when a game ends on a checkmate or a stalemate.
