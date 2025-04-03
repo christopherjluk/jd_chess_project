@@ -16,7 +16,7 @@ The chesspiece class will store the information for a chesspiece, including the 
 
 ## How to Run
 - You must have the PyQt5 package installed when running the application. This can be installed either in your local machine or in a virtual environment.
-- In the terminal, run `python chess.py`. The UI comprising of the chessboard a "new game" button will then pop up, which will then be ready to play for the two users.
+- In the terminal, run `python chess.py`. The UI comprising of the chessboard and a "new game" button will then pop up, which will then be ready to play for the two users.
 - Once a promotion occurs, a pop-up widget will appear, with 4 buttons indicating 4 pieces that a pawn can be promoted to. Clicking the button indicating whichever piece will correspond to the piece that will be promoted
 - Whenever, the "new game" button is pressed, the chessboard will reset to its original position, where white will make a first move. This can be pressed at any point during the game, but will be particularly useful, especially for when a game ends on a checkmate or a stalemate.
 - When a checkmate or a stalemate occurs, a popup widget will appear indicating the result of the game and the winner of the game (if there is one). Afterwards, a game can be restarted by either re-running the application or clicking the "new game" button again.
